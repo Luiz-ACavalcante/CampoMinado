@@ -45,7 +45,7 @@ data class Campo(val linha: Int, val coluna: Int) {
 
     fun alterarMarcado() {
         if (fechado) {
-         marcado = !marcado
+            marcado = !marcado
             val evento = if (marcado) CampoEvento.MARCACAO else CampoEvento.DESMARCACAO
             callbacks.forEach { it(this, evento) }
         }

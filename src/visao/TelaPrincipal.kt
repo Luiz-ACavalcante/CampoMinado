@@ -11,11 +11,11 @@ fun main() {
 }
 
 class TelaPrincipal : JFrame() {
-    private val tabuleiro = Tabuleiro(qtdeColunas = 20,qtdeLinhas =  30,qtdeMinas = 60)
+    private val tabuleiro = Tabuleiro(qtdeColunas = 20, qtdeLinhas = 20, qtdeMinas = 50)
     private val painelTabuleiro = PainelTabuleiro(tabuleiro)
 
     init {
-        tabuleiro.onEvento ( this::mostrarResultado )
+        tabuleiro.onEvento(this::mostrarResultado)
         add(painelTabuleiro)
 
         setSize(600, 700)
@@ -24,9 +24,10 @@ class TelaPrincipal : JFrame() {
         title = "Campo Minado"
         isVisible = true
     }
-    private fun mostrarResultado(evento: TabuleiroEvento){
-        SwingUtilities.invokeLater{
-            val menssagem = when(evento) {
+
+    private fun mostrarResultado(evento: TabuleiroEvento) {
+        SwingUtilities.invokeLater {
+            val menssagem = when (evento) {
                 TabuleiroEvento.VITORIA -> "Você ganhou !!!"
                 TabuleiroEvento.DERROTA -> "Você perdeu\nTente novamente"
             }
